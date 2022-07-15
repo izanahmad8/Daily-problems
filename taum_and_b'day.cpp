@@ -6,15 +6,15 @@ int main()
     cin >> t;
     while (t--)
     {
-        int b, w;
+        long long b, w;
         cin >> b >> w;
-        int bc, wc, z;
+        long long bc, wc, z;
         cin >> bc >> wc >> z;
-        int sum = 0;
-        int btow = w * (z + bc);
-        int wtob = b * (z + wc);
-        int black = b * bc;
-        int white = w * wc;
+        long long sum = 0;
+        long long btow = w * (z + bc);
+        long long wtob = b * (z + wc);
+        long long black = b * bc;
+        long long white = w * wc;
         sum = black + white;
         if (black + btow < sum)
         {
