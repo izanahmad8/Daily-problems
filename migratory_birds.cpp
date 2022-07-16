@@ -16,8 +16,5 @@ int main()
         mxcount = max(mxcount, freq[x]);
     }
     auto it = find(freq.begin(), freq.end(), mxcount);
-    if (it != freq.end())
-    {
-        cout << it - freq.begin() << endl;
-    }
+    cout << it - freq.begin() << endl;
 }
