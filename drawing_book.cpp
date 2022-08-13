@@ -11,5 +11,10 @@ int main()
         min = p / 2;
     }
     cout << min << endl;
+    // another method
+    /*int turn = 0;
+    turn = (n / 2) - (p / 2);
+    turn = min(turn, p / 2);
+    cout << turn << endl;*/
     return 0;
 }
