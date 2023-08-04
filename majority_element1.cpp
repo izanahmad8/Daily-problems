@@ -1,13 +1,22 @@
-int majorityElement(int a[], int size)
+class Solution
 {
-    unordered_map<int, int> m;
-    for (int i = 0; i < size; i++)
+public:
+    int majorityElement(vector<int> &nums)
     {
-        m[a[i]]++;
-        if (m[a[i]] > size / 2)
+        int major = 0, index = 0;
+        unordered_map<int, int> m;
+        for (auto i : nums)
         {
-            return a[i];
+            m[i]++;
         }
+        for (auto i : m)
+        {
+            if (i.second > major)
+            {
+                major = i.second;
+                index = i.first;
+            }
+        }
+        return index;
     }
-    return -1;
-}
+};
