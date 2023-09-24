@@ -1,21 +1,21 @@
 vector<int> duplicates(int arr[], int n)
 {
-    vector<int> res;
-    sort(arr, arr + n);
-    for (int i = 1; i < n; i++)
+    map<int, int> m;
+    for (int i = 0; i < n; i++)
     {
-        if (arr[i] == arr[i - 1])
+        m[arr[i]]++;
+    }
+    vector<int> v;
+    for (auto i : m)
+    {
+        if (i.second > 1)
         {
-            while (arr[i] == arr[i + 1])
-            {
-                i++;
-            }
-            res.push_back(arr[i]);
+            v.push_back(i.first);
         }
     }
-    if (res.size() == 0)
+    if (v.empty())
     {
-        res.push_back(-1);
+        return {-1};
     }
-    return res;
+    return v;
 }

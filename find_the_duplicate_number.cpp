@@ -1,7 +1,6 @@
 int findDuplicate(vector<int> &nums)
 {
     int n = nums.size();
-
     for (int i = 0; i < n; ++i)
     {
         int ind = abs(nums[i]);
@@ -11,6 +10,5 @@ int findDuplicate(vector<int> &nums)
 
         nums[ind] = -nums[ind];
     }
-
     return n;
 }
