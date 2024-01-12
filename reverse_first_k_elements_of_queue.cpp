@@ -1,8 +1,8 @@
 queue<int> modifyQueue(queue<int> q, int k)
 {
-    queue<int> ans;
     stack<int> s;
-    for (int i = 0; i < k; i++)
+    queue<int> ans;
+    while (k--)
     {
         s.push(q.front());
         q.pop();
