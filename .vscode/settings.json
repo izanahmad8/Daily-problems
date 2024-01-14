@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.embeddedhtml": "html",
     "deque": "cpp",
     "string": "cpp",
     "vector": "cpp",
@@ -12,6 +13,9 @@
     "regex": "cpp",
     "utility": "cpp",
     "valarray": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "*.tcc": "cpp",
+    "list": "cpp",
+    "unordered_set": "cpp"
   }
 }
