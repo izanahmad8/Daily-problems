@@ -1,17 +1,11 @@
 int smallestEvenMultiple(int n)
 {
-    if (n == 1)
+    if (n % 2 == 0)
     {
-        return 2;
+        return n;
     }
-    int i = n;
-    while (i < n * n)
+    else
     {
-        if (i % 2 == 0 && i % n == 0)
-        {
-            return i;
-        }
-        i++;
+        return n * 2;
     }
-    return -1;
 }
