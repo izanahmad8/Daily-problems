@@ -1,13 +1,13 @@
 string removeDuplicates(string str)
 {
-    set<char> s;
-    string ans = "";
-    for (int i = 0; i < str.size(); i++)
+    unordered_set<char> st;
+    string ans;
+    for (auto i : str)
     {
-        if (s.find(str[i]) == s.end())
+        if (st.find(i) == st.end())
         {
-            s.insert(str[i]);
-            ans.push_back(str[i]);
+            st.insert(i);
+            ans.push_back(i);
         }
     }
     return ans;
