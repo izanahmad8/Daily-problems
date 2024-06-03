@@ -13,7 +13,5 @@ int appendCharacters(string s, string t)
             i++;
         }
     }
-    if (j == t.size())
-        return 0;
     return t.size() - j;
 }
