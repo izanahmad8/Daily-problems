@@ -20,6 +20,7 @@
     "forward_list": "cpp",
     "chrono": "cpp",
     "algorithm": "cpp",
-    "any": "cpp"
+    "any": "cpp",
+    "random": "cpp"
   }
 }
