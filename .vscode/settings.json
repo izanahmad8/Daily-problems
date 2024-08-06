@@ -23,6 +23,9 @@
     "any": "cpp",
     "random": "cpp",
     "ratio": "cpp",
-    "limits": "cpp"
+    "limits": "cpp",
+    "barrier": "cpp",
+    "latch": "cpp",
+    "semaphore": "cpp"
   }
 }
