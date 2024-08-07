@@ -1,3 +1,4 @@
+// top down approach
 long long solve(int i, bool isEven, vector<int> &nums, vector<vector<long long>> &dp)
 {
     if (i >= nums.size())
