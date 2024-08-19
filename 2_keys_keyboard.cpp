@@ -26,3 +26,40 @@ int minSteps(int n)
     vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
     return 1 + solve(n, 1, 1, dp);
 }
+
+// bottom-up approach
+int minSteps(int n)
+{
+    if (n == 1)
+    {
+        return 0;
+    }
+    if (n == 2)
+    {
+        return 2;
+    }
+    vector<int> dp(n + 1, 0);
+    dp[0] = 0;
+    dp[1] = 0;
+    dp[2] = 2;
+    for (int i = 3; i <= n; i++)
+    {
+        int factor = i / 2;
+        while (factor >= 1)
+        {
+            if (i % factor == 0)
+            {
+                int step_factor = dp[factor];
+                int copy = 1;
+                int paste = (i / factor - 1);
+                dp[i] = step_factor + copy + paste;
+                break;
+            }
+            else
+            {
+                factor--;
+            }
+        }
+    }
+    return dp[n];
+}
