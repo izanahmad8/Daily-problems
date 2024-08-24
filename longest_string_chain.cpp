@@ -47,3 +47,47 @@ int longestStrChain(vector<string> &words)
     sort(begin(words), end(words), comp);
     return solve(words, 0, -1, dp);
 }
+
+// bottom-up approach
+static bool comp(string &word1, string &word2)
+{
+    return word1.size() < word2.size();
+}
+bool isPred(string &a, string &b)
+{
+    int m = a.size();
+    int n = b.size();
+    if (m >= n || n - m != 1)
+    {
+        return false;
+    }
+    int i = 0, j = 0;
+    while (i < m && j < n)
+    {
+        if (a[i] == b[j])
+        {
+            i++;
+        }
+        j++;
+    }
+    return i == m;
+}
+int longestStrChain(vector<string> &words)
+{
+    int n = words.size();
+    vector<int> dp(n, 1);
+    sort(begin(words), end(words), comp);
+    int maxLis = 1;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (isPred(words[j], words[i]))
+            {
+                dp[i] = max(dp[i], dp[j] + 1);
+                maxLis = max(maxLis, dp[i]);
+            }
+        }
+    }
+    return maxLis;
+}
