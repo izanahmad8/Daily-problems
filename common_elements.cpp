@@ -1,35 +1,19 @@
-vector<int> commonElements(int A[], int B[], int C[], int n1, int n2, int n3)
+vector<int> common_element(vector<int> v1, vector<int> v2)
 {
-    map<int, int> m;
-    for (int i = 0; i < n1; i++)
+    unordered_map<int, int> mp;
+    vector<int> ans;
+    for (auto num : v1)
     {
-        if (A[i] == A[i - 1])
-            continue;
-        m[A[i]]++;
+        mp[num]++;
     }
-    for (int i = 0; i < n2; i++)
+    for (auto num : v2)
     {
-        if (B[i] == B[i - 1])
-            continue;
-        m[B[i]]++;
-    }
-    for (int i = 0; i < n3; i++)
-    {
-        if (C[i] == C[i - 1])
-            continue;
-        m[C[i]]++;
-    }
-    vector<int> res;
-    for (auto i : m)
-    {
-        if (i.second > 2)
+        if (mp[num])
         {
-            res.push_back(i.first);
+            ans.push_back(num);
+            mp[num]--;
         }
     }
-    if (res.empty())
-    {
-        return {-1};
-    }
-    return res;
+    sort(ans.begin(), ans.end());
+    return ans;
 }
