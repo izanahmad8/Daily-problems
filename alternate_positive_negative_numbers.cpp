@@ -1,5 +1,6 @@
-void rearrange(int arr[], int n)
+void rearrange(vector<int> &arr)
 {
+    int n = arr.size();
     vector<int> pos, neg;
     for (int i = 0; i < n; i++)
     {
@@ -12,16 +13,18 @@ void rearrange(int arr[], int n)
             neg.push_back(arr[i]);
         }
     }
+    int i = 0;
     int j = 0;
-    for (int i = 0; i < max(pos.size(), neg.size()) && j < n; i++)
+    int k = 0;
+    while (i < pos.size() || j < neg.size())
     {
         if (i < pos.size())
         {
-            arr[j++] = pos[i];
+            arr[k++] = pos[i++];
         }
-        if (i < neg.size())
+        if (j < neg.size())
         {
-            arr[j++] = neg[i];
+            arr[k++] = neg[j++];
         }
     }
 }
