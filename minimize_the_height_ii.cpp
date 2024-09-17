@@ -1,19 +1,15 @@
-int getMinDiff(int arr[], int n, int k)
+int getMinDiff(vector<int> &arr, int k)
 {
-    sort(arr, arr + n);
-    int ans = arr[n - 1] - arr[0];
-    int small = arr[0] + k;
-    int large = arr[n - 1] - k;
-    int mini, maxi;
-    for (int i = 0; i < n; i++)
+    int n = arr.size();
+    sort(arr.begin(), arr.end());
+    int min_diff = arr[n - 1] - arr[0];
+    for (int i = 1; i < n; i++)
     {
-        mini = min(small, arr[i + 1] - k);
-        maxi = max(large, arr[i] + k);
-        if (mini < 0)
-        {
+        if (arr[i] < k)
             continue;
-        }
-        ans = min(ans, maxi - mini);
+        int mini = min(arr[0] + k, arr[i] - k);
+        int maxi = max(arr[n - 1] - k, arr[i - 1] + k);
+        min_diff = min(min_diff, maxi - mini);
     }
-    return ans;
+    return min_diff;
 }
