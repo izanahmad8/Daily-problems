@@ -7,7 +7,7 @@ int countBuildings(vector<int> &height)
         if (height[i] > maxi)
         {
             count++;
-            maxi = max(maxi, height[i]);
+            maxi = height[i];
         }
     }
     return count;
