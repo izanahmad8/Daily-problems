@@ -1,29 +1,29 @@
-ListNode *reverse(ListNode *head)
+Node *reverse(Node *head)
 {
-    ListNode *prev = NULL;
-    ListNode *curr = head;
+    Node *prev = NULL;
+    Node *curr = head;
     while (curr != NULL)
     {
-        ListNode *next = curr->next;
+        Node *forw = curr->next;
         curr->next = prev;
         prev = curr;
-        curr = next;
+        curr = forw;
     }
     return prev;
 }
-bool isPalindrome(ListNode *head)
+bool isPalindrome(Node *head)
 {
-    ListNode *slow = head;
-    ListNode *fast = head;
-    while (fast != NULL && fast->next != NULL)
+    Node *slow = head;
+    Node *fast = head;
+    while (fast && fast->next)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
-    ListNode *last = reverse(slow);
-    while (last != NULL)
+    Node *last = reverse(slow);
+    while (last)
     {
-        if (head->val != last->val)
+        if (head->data != last->data)
         {
             return false;
         }
