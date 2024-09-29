@@ -11,6 +11,6 @@ vector<int> merge(Node *root1, Node *root2)
     vector<int> ans;
     solve(root1, ans);
     solve(root2, ans);
-    sort(ans.begin(), ans.end());
+    sort(begin(ans), end(ans));
     return ans;
 }
