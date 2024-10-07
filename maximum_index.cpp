@@ -1,26 +1,24 @@
-int maxIndexDiff(int a[], int n)
+int maxIndexDiff(int arr[], int n)
 {
-    vector<int> max_arr(n, 0);
-    vector<int> min_arr(n, 0);
-    int maxi = INT_MIN;
-    for (int i = n - 1; i >= 0; i--)
+    int left[n], right[n];
+    left[0] = arr[0];
+    right[n - 1] = arr[n - 1];
+    for (int i = 1; i < n; i++)
     {
-        maxi = max(maxi, a[i]);
-        max_arr[i] = maxi;
+        left[i] = min(left[i - 1], arr[i]);
     }
-    int mini = INT_MAX;
-    for (int i = 0; i < n; i++)
+    for (int i = n - 2; i >= 0; i--)
     {
-        mini = min(mini, a[i]);
-        min_arr[i] = mini;
+        right[i] = max(right[i + 1], arr[i]);
     }
-    int ans = -1;
-    int i = 0, j = 0;
+    int i = 0;
+    int j = 0;
+    int max_idx = 0;
     while (i < n && j < n)
     {
-        if (max_arr[j] >= min_arr[i])
+        if (left[i] <= right[j])
         {
-            ans = max(ans, j - i);
+            max_idx = max(max_idx, j - i);
             j++;
         }
         else
@@ -28,5 +26,5 @@ int maxIndexDiff(int a[], int n)
             i++;
         }
     }
-    return ans;
+    return max_idx;
 }
