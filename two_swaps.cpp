@@ -20,5 +20,7 @@ bool checkSorted(vector<int> &arr)
             return false;
         }
     }
-    return count <= 2;
+    if (count == 0)
+        return true;
+    return count == 2;
 }
