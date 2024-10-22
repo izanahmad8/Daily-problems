@@ -1,6 +1,5 @@
 int sameOccurrence(vector<int> &arr, int x, int y)
 {
-    int n = arr.size();
     int count = 0;
     unordered_map<int, int> mp;
     mp[0] = 1;
