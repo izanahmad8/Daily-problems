@@ -1,14 +1,14 @@
-int count(struct node *head, int search_for)
+int count(struct Node *head, int key)
 {
-    node *tmp = head;
     int count = 0;
-    while (tmp != NULL)
+    Node *temp = head;
+    while (temp)
     {
-        if (tmp->data == search_for)
+        if (temp->data == key)
         {
             count++;
         }
-        tmp = tmp->next;
+        temp = temp->next;
     }
     return count;
 }
