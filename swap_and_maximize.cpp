@@ -1,7 +1,8 @@
-long long int maxSum(int arr[], int n)
+long long maxSum(vector<int> &arr)
 {
     long long int sum = 0;
-    sort(arr, arr + n);
+    int n = arr.size();
+    sort(arr.begin(), arr.end());
     int i = 0;
     int j = n - 1;
     while (i < j)
