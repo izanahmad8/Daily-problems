@@ -1,18 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-int main()
+int find_median(vector<int> v)
 {
-    int n;
-    cin >> n;
-    vector<int> v;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        v.push_back(x);
-    }
     sort(v.begin(), v.end());
-    int mid = n / 2;
-    cout << v[mid] << endl;
-    return 0;
+    int n = v.size();
+    if (n % 2 != 0)
+    {
+        return v[n / 2];
+    }
+    return (v[n / 2] + v[n / 2 - 1]) / 2;
 }
