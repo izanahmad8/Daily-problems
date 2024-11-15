@@ -1,13 +1,12 @@
-int print2largest(int arr[], int n)
+int getSecondLargest(vector<int> &arr)
 {
+    int largest = *max_element(arr.begin(), arr.end());
     int ans = -1;
-    sort(arr, arr + n);
-    for (int i = n - 2; i >= 0; i--)
+    for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[n - 1] != arr[i])
+        if (arr[i] > ans && arr[i] != largest)
         {
             ans = arr[i];
-            break;
         }
     }
     return ans;
