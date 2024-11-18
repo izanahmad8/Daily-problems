@@ -1,16 +1,7 @@
-void rotateArr(int arr[], int d, int n)
+void rotateArr(vector<int> &arr, int d)
 {
-    d = d % n;
-    reverse(arr, arr + d);
-    reverse(arr + d, arr + n);
-    reverse(arr, arr + n);
-}
-
-// leetcode
-void rotate(vector<int> &nums, int k)
-{
-    k = k % nums.size();
-    reverse(nums.begin(), nums.end());
-    reverse(nums.begin(), nums.begin() + k);
-    reverse(nums.begin() + k, nums.end());
+    d = d % arr.size();
+    reverse(arr.begin(), arr.begin() + d);
+    reverse(arr.begin() + d, arr.end());
+    reverse(arr.begin(), arr.end());
 }
