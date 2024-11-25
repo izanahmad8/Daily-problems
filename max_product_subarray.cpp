@@ -1,8 +1,8 @@
-long long maxProduct(vector<int> arr, int n)
+int maxProduct(vector<int> &arr)
 {
-    long long ans = INT_MIN;
-    long long prod = 1;
-    for (int i = 0; i < n; i++)
+    int ans = INT_MIN;
+    int prod = 1;
+    for (int i = 0; i < arr.size(); i++)
     {
         prod *= arr[i];
         ans = max(ans, prod);
@@ -12,7 +12,7 @@ long long maxProduct(vector<int> arr, int n)
         }
     }
     prod = 1;
-    for (int i = n - 1; i >= 0; i--)
+    for (int i = arr.size() - 1; i >= 0; i--)
     {
         prod *= arr[i];
         ans = max(ans, prod);
