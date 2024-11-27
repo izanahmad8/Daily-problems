@@ -1,13 +1,17 @@
-int missingNumber(int arr[], int n)
+int missingNumber(vector<int> &arr)
 {
-    int count = 1;
-    sort(arr, arr + n);
-    for (int i = 0; i < n; i++)
+    sort(begin(arr), end(arr));
+    int ans = 1;
+    for (int &ele : arr)
     {
-        if (arr[i] == count)
+        if (ele == ans)
         {
-            count++;
+            ans++;
+        }
+        else if (ele > ans)
+        {
+            break;
         }
     }
-    return count;
+    return ans;
 }
