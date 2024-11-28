@@ -1,22 +1,26 @@
-int atoi(string s)
+int myAtoi(char *s)
 {
-    int ans = 0;
+    long long ans = 0;
     int sign = 1;
-    for (int i = 0; i < s.size(); i++)
+    int i = 0;
+    while (s[i] == ' ')
     {
-        if (s[i] == '-' && i == 0)
-        {
-            sign = -1;
-        }
-        else if (s[i] >= '0' && s[i] <= '9')
-        {
-            ans = ans * 10 + (s[i] - '0');
-        }
-        else
-        {
-            return -1;
-        }
+        i++;
     }
-    ans = ans * sign;
+    if (s[i] == '-')
+    {
+        sign = -1;
+        i++;
+    }
+    while (s[i] >= '0' && s[i] <= '9')
+    {
+        ans = ans * 10 + (s[i] - '0');
+        i++;
+    }
+    ans *= sign;
+    if (ans >= INT_MAX)
+        return INT_MAX;
+    if (ans <= INT_MIN)
+        return INT_MIN;
     return ans;
 }
