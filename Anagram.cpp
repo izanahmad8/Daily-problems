@@ -1,15 +1,17 @@
-bool isAnagram(string a, string b)
+bool areAnagrams(string &s1, string &s2)
 {
-
-    if (a.size() != b.size())
+    vector<int> freq(26, 0);
+    for (char &ch : s1)
     {
-        return false;
+        freq[ch - 'a']++;
     }
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    for (int i = 0; i < a.size(); i++)
+    for (char &ch : s2)
     {
-        if (a[i] != b[i])
+        freq[ch - 'a']--;
+    }
+    for (int count : freq)
+    {
+        if (count != 0)
         {
             return false;
         }
