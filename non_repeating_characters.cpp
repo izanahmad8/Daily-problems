@@ -1,13 +1,13 @@
-char nonrepeatingCharacter(string S)
+char nonRepeatingChar(string &s)
 {
-    unordered_map<char, int> mp;
-    for (char &ch : S)
+    vector<int> freq(26, 0);
+    for (char &ch : s)
     {
-        mp[ch]++;
+        freq[ch - 'a']++;
     }
-    for (char &ch : S)
+    for (char &ch : s)
     {
-        if (mp[ch] == 1)
+        if (freq[ch - 'a'] == 1)
         {
             return ch;
         }
