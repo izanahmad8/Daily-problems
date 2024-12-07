@@ -1,6 +1,6 @@
-long long int mergeSort(vector<long long> &arr, int l, int h)
+int mergeSort(vector<int> &arr, int l, int h)
 {
-    long long int cnt = 0;
+    int cnt = 0;
     if (l < h)
     {
         int m = l + (h - l) / 2;
@@ -10,11 +10,11 @@ long long int mergeSort(vector<long long> &arr, int l, int h)
     }
     return cnt;
 }
-long long int merge(vector<long long> &arr, int l, int mid, int h)
+int merge(vector<int> &arr, int l, int mid, int h)
 {
     int n = mid - l + 1;
     int m = h - mid;
-    vector<long long> left(n), right(m);
+    vector<int> left(n), right(m);
     int k = l;
     for (int i = 0; i < n; i++)
     {
@@ -26,7 +26,7 @@ long long int merge(vector<long long> &arr, int l, int mid, int h)
     }
     int i = 0, j = 0;
     k = l;
-    long long int cnt = 0;
+    int cnt = 0;
     while (i < n && j < m)
     {
         if (left[i] <= right[j])
@@ -49,10 +49,10 @@ long long int merge(vector<long long> &arr, int l, int mid, int h)
     }
     return cnt;
 }
-long long int inversionCount(vector<long long> &arr)
+int inversionCount(vector<int> &arr)
 {
     int l = 0;
     int h = arr.size() - 1;
-    long long int count = mergeSort(arr, l, h);
+    int count = mergeSort(arr, l, h);
     return count;
 }
