@@ -1,12 +1,14 @@
-void merge(long long arr1[], long long arr2[], int n, int m)
+void mergeArrays(vector<int> &a, vector<int> &b)
 {
+    int n = a.size();
+    int m = b.size();
     int i = n - 1;
     int j = 0;
     while (i >= 0 && j < m)
     {
-        if (arr1[i] >= arr2[j])
+        if (a[i] >= b[j])
         {
-            swap(arr1[i], arr2[j]);
+            swap(a[i], b[j]);
             i--;
             j++;
         }
@@ -15,6 +17,6 @@ void merge(long long arr1[], long long arr2[], int n, int m)
             break;
         }
     }
-    sort(arr1, arr1 + n);
-    sort(arr2, arr2 + m);
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
 }
