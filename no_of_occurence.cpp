@@ -1,16 +1,6 @@
-int count(int arr[], int n, int x)
+int countFreq(vector<int> &arr, int target)
 {
-    unordered_map<int, int> m;
-    for (int i = 0; i < n; i++)
-    {
-        m[arr[i]]++;
-    }
-    for (auto i : m)
-    {
-        if (i.first == x)
-        {
-            return i.second;
-        }
-    }
-    return 0;
+    int l = lower_bound(arr.begin(), arr.end(), target) - arr.begin();
+    int r = upper_bound(arr.begin(), arr.end(), target) - arr.begin();
+    return r - l;
 }
