@@ -1,15 +1,16 @@
-int search(int A[], int l, int h, int key)
+int search(vector<int> &arr, int key)
 {
+    int l = 0, h = arr.size() - 1;
     while (l <= h)
     {
         int mid = (l + h) / 2;
-        if (A[mid] == key)
+        if (arr[mid] == key)
         {
             return mid;
         }
-        if (A[l] <= A[mid])
+        if (arr[l] <= arr[mid])
         {
-            if (A[l] <= key && A[mid] > key)
+            if (arr[l] <= key && arr[mid] > key)
             {
                 h = mid - 1;
             }
@@ -20,7 +21,7 @@ int search(int A[], int l, int h, int key)
         }
         else
         {
-            if (A[mid] < key && A[h] >= key)
+            if (arr[mid] < key && arr[h] >= key)
             {
                 l = mid + 1;
             }
