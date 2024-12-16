@@ -1,18 +1,18 @@
-int kthElement(int k, vector<int> &arr1, vector<int> &arr2)
+int kthElement(vector<int> &a, vector<int> &b, int k)
 {
     int i = 0, j = 0;
     int ans = -1;
-    int n = arr1.size();
-    int m = arr2.size();
+    int n = a.size();
+    int m = b.size();
     while (i < n && j < m)
     {
-        if (arr1[i] < arr2[j])
+        if (a[i] < b[j])
         {
-            ans = arr1[i++];
+            ans = a[i++];
         }
         else
         {
-            ans = arr2[j++];
+            ans = b[j++];
         }
         k--;
         if (k == 0)
@@ -20,14 +20,14 @@ int kthElement(int k, vector<int> &arr1, vector<int> &arr2)
     }
     while (i < n)
     {
-        ans = arr1[i++];
+        ans = a[i++];
         k--;
         if (k == 0)
             return ans;
     }
     while (j < m)
     {
-        ans = arr2[j++];
+        ans = b[j++];
         k--;
         if (k == 0)
             return ans;
