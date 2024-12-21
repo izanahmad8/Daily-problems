@@ -1,10 +1,11 @@
-void rotateby90(vector<vector<int>> &matrix, int n)
+void rotateby90(vector<vector<int>> &mat)
 {
+    int n = mat.size();
     for (int i = 0; i < n; i++)
     {
         for (int j = i + 1; j < n; j++)
         {
-            swap(matrix[i][j], matrix[j][i]);
+            swap(mat[i][j], mat[j][i]);
         }
     }
     for (int i = 0; i < n; i++)
@@ -12,7 +13,7 @@ void rotateby90(vector<vector<int>> &matrix, int n)
         int low = 0, high = n - 1;
         while (low < high)
         {
-            swap(matrix[low][i], matrix[high][i]);
+            swap(mat[low][i], mat[high][i]);
             low++;
             high--;
         }
