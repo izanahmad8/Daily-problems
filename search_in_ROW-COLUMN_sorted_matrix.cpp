@@ -1,19 +1,21 @@
-bool search(vector<vector<int>> matrix, int n, int m, int x)
+bool matSearch(vector<vector<int>> &mat, int x)
 {
+    int n = mat.size();
+    int m = mat[0].size();
     int i = 0, j = m - 1;
     while (i < n && j >= 0)
     {
-        if (matrix[i][j] == x)
+        if (x > mat[i][j])
         {
-            return true;
+            i++;
         }
-        else if (matrix[i][j] > x)
+        else if (x < mat[i][j])
         {
             j--;
         }
         else
         {
-            i++;
+            return true;
         }
     }
     return false;
