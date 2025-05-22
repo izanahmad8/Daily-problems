@@ -1,4 +1,4 @@
-int solve(int i, int j, string &s, vector<vector<int>> &dp)
+int solve(string &s, int i, int j, vector<vector<int>> &dp)
 {
     if (i >= j)
     {
@@ -10,16 +10,16 @@ int solve(int i, int j, string &s, vector<vector<int>> &dp)
     }
     if (s[i] == s[j])
     {
-        return dp[i][j] = solve(i + 1, j - 1, s, dp);
+        return dp[i][j] = solve(s, i + 1, j - 1, dp);
     }
     else
     {
-        return dp[i][j] = 1 + min(solve(i + 1, j, s, dp), solve(i, j - 1, s, dp));
+        return dp[i][j] = 1 + min(solve(s, i + 1, j, dp), solve(s, i, j - 1, dp));
     }
 }
-int minimumNumberOfDeletions(string S)
+int minDeletions(string s)
 {
-    int n = S.size();
+    int n = s.size();
     vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
-    return solve(0, n - 1, S, dp);
+    return solve(s, 0, n - 1, dp);
 }
