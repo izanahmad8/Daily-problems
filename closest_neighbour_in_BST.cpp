@@ -1,17 +1,17 @@
-void solve(Node *root, int n, int &padosi)
+void solve(Node *root, int k, int &ans)
 {
     if (!root)
         return;
-    solve(root->left, n, padosi);
-    if (root->key <= n)
+    solve(root->left, k, ans);
+    if (root->data <= k)
     {
-        padosi = root->key;
+        ans = root->data;
     }
-    solve(root->right, n, padosi);
+    solve(root->right, k, ans);
 }
-int findMaxForN(Node *root, int n)
+int findMaxFork(Node *root, int k)
 {
-    int padosi = -1;
-    solve(root, n, padosi);
-    return padosi;
+    int ans = -1;
+    solve(root, k, ans);
+    return ans;
 }
