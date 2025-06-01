@@ -1,35 +1,25 @@
-int countPairs(vector<vector<int>> &mat1, vector<vector<int>> &mat2, int n, int x)
-{
-    int count = 0;
-    int i = 0, j = 0;
-    int k = n - 1, l = n - 1;
-    while (i < n && k >= 0)
-    {
-        int sum = mat1[i][j] + mat2[k][l];
-        if (sum == x)
-        {
-            count++;
-            l--;
-            j++;
+int countPairs(vector<vector<int>> &mat1, vector<vector<int>> &mat2, int x) {
+        int n=mat1.size();
+        int i=0,j=0,k=n-1,l=n-1;
+        int ans=0;
+        while(j<n and l>=0){
+            if(mat1[j][i]+mat2[l][k]==x){
+                ans++;
+                i++;
+                k--;
+            }else if(mat1[j][i]+mat2[l][k]>x){
+                k--;
+            }else{
+                i++;
+            }
+            if(i>=n){
+                i=0;
+                j++;
+            }
+            if(k<0){
+                k=n-1;
+                l--;
+            }
         }
-        else if (sum < x)
-        {
-            j++;
-        }
-        else
-        {
-            l--;
-        }
-        if (j == n)
-        {
-            j = 0;
-            i++;
-        }
-        if (l < 0)
-        {
-            l = n - 1;
-            k--;
-        }
-    }
-    return count;
+    return ans;
 }
