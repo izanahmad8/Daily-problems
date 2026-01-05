@@ -1,15 +1,10 @@
-long maximumSumSubarray(int K, vector<int> &Arr, int N)
+int maxSubarraySum(vector<int> &arr, int k)
 {
-    long maxSum = 0;
-    long sum = 0;
-    for (int i = 0; i < K; i++)
+    int sum = accumulate(arr.begin(), arr.begin() + k, 0);
+    int maxSum = sum;
+    for (int i = k; i < arr.size(); i++)
     {
-        sum += Arr[i];
-    }
-    maxSum = sum;
-    for (int i = K; i < N; i++)
-    {
-        sum += Arr[i] - Arr[i - K];
+        sum += arr[i] - arr[i - k];
         maxSum = max(maxSum, sum);
     }
     return maxSum;
