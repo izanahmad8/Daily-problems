@@ -1,31 +1,29 @@
-int smallestSubstring(string S)
+int smallestSubstring(string s)
 {
-    int zero = -1;
-    int one = -1;
-    int two = -1;
-    int ans = INT_MAX;
-    for (int i = 0; i < S.size(); i++)
+    int n = s.size();
+    int win = INT_MAX, currWin = 0;
+    int freq[3] = {0};
+    int i = 0, j = 0;
+    while (j < n)
     {
-        if (S[i] == '0')
+        freq[s[j] - '0']++;
+        if (freq[s[j] - '0'] == 1)
         {
-            zero = i;
+            currWin++;
         }
-        if (S[i] == '1')
+        if (currWin == 3)
         {
-            one = i;
+            while (freq[s[i] - '0'] > 1)
+            {
+                freq[s[i] - '0']--;
+                i++;
+            }
+            win = min(win, j - i + 1);
+            freq[s[i] - '0']--;
+            i++;
+            currWin--;
         }
-        if (S[i] == '2')
-        {
-            two = i;
-        }
-        if (zero != -1 && one != -1 && two != -1)
-        {
-            ans = min(ans, i + 1 - min(zero, min(one, two)));
-        }
+        j++;
     }
-    if (ans != INT_MAX)
-    {
-        return ans;
-    }
-    return -1;
+    return win == INT_MAX ? -1 : win;
 }
