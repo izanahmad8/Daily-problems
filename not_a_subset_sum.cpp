@@ -1,9 +1,15 @@
-long long findSmallest(vector<int> &arr)
+int findSmallest(vector<int> &arr)
 {
-    long long res = 1;
-    for (int i = 0; i < arr.size() && arr[i] <= res; i++)
+    int sum = 1;
+    sort(arr.begin(), arr.end());
+    for (int i = 0; i < arr.size(); i++)
     {
-        res += arr[i];
+        if (arr[i] <= sum)
+        {
+            sum += arr[i];
+        }
+        else
+            break;
     }
-    return res;
+    return sum;
 }
