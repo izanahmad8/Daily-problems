@@ -1,30 +1,31 @@
-bool dfs(int u, vector<vector<int>> &adj, vector<int> &vis, int parent)
+bool dfs(unordered_map<int, vector<int>> &adj, int u, vector<bool> &vis, int parent)
 {
-    vis[u] = 1;
+    vis[u] = true;
     for (int &v : adj[u])
     {
         if (v == parent)
-        {
             continue;
-        }
         if (vis[v])
-        {
             return true;
-        }
-        if (dfs(v, adj, vis, u))
-        {
+        if (dfs(adj, v, vis, u))
             return true;
-        }
     }
     return false;
 }
-bool isCycle(vector<vector<int>> adj)
+bool isCycle(int V, vector<vector<int>> &edges)
 {
-    int v = adj.size();
-    vector<int> vis(v, 0);
-    for (int u = 0; u < v; u++)
+    vector<bool> vis(V, false);
+    unordered_map<int, vector<int>> adj;
+    for (auto &edge : edges)
     {
-        if (!vis[u] && dfs(u, adj, vis, -1))
+        int u = edge[0];
+        int v = edge[1];
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    for (int i = 0; i < V; i++)
+    {
+        if (!vis[i] && dfs(adj, i, vis, -1))
         {
             return true;
         }
