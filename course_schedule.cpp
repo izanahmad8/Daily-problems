@@ -1,40 +1,42 @@
-vector<int> findOrder(int n, int m, vector<vector<int>> prerequisites)
+bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
 {
-    vector<int> adj[n];
-    for (auto i : prerequisites)
+    vector<int> indegree(numCourses, 0);
+    unordered_map<int, vector<int>> adj;
+    int course = 0;
+    queue<int> q;
+    for (auto &pre : prerequisites)
     {
-        adj[i[1]].push_back(i[0]);
+        int u = pre[1];
+        int v = pre[0];
+        adj[u].push_back(v);
     }
-    vector<int> indegree(n, 0);
-    for (int i = 0; i < n; i++)
+    for (int u = 0; u < numCourses; u++)
     {
-        for (auto it : adj[i])
+        for (int &v : adj[u])
         {
-            indegree[it]++;
+            indegree[v]++;
         }
     }
-    queue<int> q;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < numCourses; i++)
     {
         if (indegree[i] == 0)
         {
             q.push(i);
         }
     }
-    vector<int> topo;
     while (!q.empty())
     {
-        int node = q.front();
+        int u = q.front();
         q.pop();
-        topo.push_back(node);
-        for (auto it : adj[node])
+        course++;
+        for (int &v : adj[u])
         {
-            indegree[it]--;
-            if (indegree[it] == 0)
+            indegree[v]--;
+            if (indegree[v] == 0)
             {
-                q.push(it);
+                q.push(v);
             }
         }
     }
-    return topo.size() == n ? topo : vector<int>();
+    return course == numCourses;
 }
