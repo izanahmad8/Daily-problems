@@ -1,0 +1,29 @@
+bool dfs(vector<vector<int>> &graph, int u, vector<int> &color, int currColor)
+{
+    color[u] = currColor;
+    for (int &v : graph[u])
+    {
+        if (color[v] == -1)
+        {
+            if (!dfs(graph, v, color, !currColor))
+                return false;
+        }
+        else if (color[v] == color[u])
+            return false;
+    }
+    return true;
+}
+bool isBipartite(vector<vector<int>> &graph)
+{
+    int V = graph.size();
+    vector<int> color(V, -1);
+    for (int i = 0; i < V; i++)
+    {
+        if (color[i] == -1)
+        {
+            if (!dfs(graph, i, color, 1))
+                return false;
+        }
+    }
+    return true;
+}
