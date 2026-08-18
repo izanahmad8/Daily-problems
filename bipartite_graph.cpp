@@ -1,19 +1,23 @@
-bool dfs(unordered_map<int, vector<int>> &adj, int u, vector<int> &color, int currColor)
+bool bfs(unordered_map<int, vector<int>> &adj, int u, vector<int> &color, int currColor)
 {
+    queue<int> q;
+    q.push(u);
     color[u] = currColor;
-    for (int &v : adj[u])
+    while (!q.empty())
     {
-        if (color[v] == -1)
+        int u = q.front();
+        q.pop();
+        for (int &v : adj[u])
         {
-            int colorV = !currColor;
-            if (!dfs(adj, v, color, colorV))
+            if (color[v] == -1)
+            {
+                color[v] = !color[u];
+                q.push(v);
+            }
+            else if (color[v] == color[u])
             {
                 return false;
             }
-        }
-        else if (color[v] == color[u])
-        {
-            return false;
         }
     }
     return true;
@@ -33,7 +37,7 @@ bool isBipartite(int V, vector<vector<int>> &edges)
     {
         if (color[i] == -1)
         {
-            if (!dfs(adj, i, color, 1))
+            if (!bfs(adj, i, color, 1))
             {
                 return false;
             }
